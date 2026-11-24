@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "f3qsource"
-  }
+    "default": "bills-crossroads"
+  },
+  "targets": {}
 }

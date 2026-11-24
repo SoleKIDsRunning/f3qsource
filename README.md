@@ -39,5 +39,7 @@ python3 scripts/build.py
 ## Deploying
 
 Every push to `main` deploys via `.github/workflows/firebase-hosting-merge.yml`,
-which needs a `FIREBASE_SERVICE_ACCOUNT` repository secret (a service-account
+which needs a `FIREBASE_SERVICE_ACCOUNT` repository secret. The site is the
+`f3qsource` Hosting site inside the `bills-crossroads` Firebase project
+(`"site"` in `firebase.json` keeps deploys off that project's default site).
 key JSON from Firebase console → Project settings → Service accounts).
