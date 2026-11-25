@@ -69,7 +69,9 @@ def display_name(name):
     words = name.replace("(TEAM)", "(Team)").split()
     out = []
     for i, w in enumerate(words):
-        if w.isupper() and len(w) > 1 and w not in ("DRP", "LDP", "IMPACT", "M"):
+        if w == "QSOURCE":
+            w = "QSource"
+        elif w.isupper() and len(w) > 1 and w not in ("DRP", "LDP", "IMPACT", "M"):
             w = w.capitalize() if not (i and w.lower() in small) else w.lower()
         out.append(w)
     return " ".join(out)
