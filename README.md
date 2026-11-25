@@ -9,8 +9,8 @@ Firebase Hosting.
 
 | Path    | Source                                                       |
 |---------|--------------------------------------------------------------|
-| `/2018/` | *QSource: The F3 Manual Of Leadership* (2018 PDF): Foundation, Q1, Q2, plus the Appendix A lexicon |
-| `/2021/` | *QSource: The F3 Leadership Handbook* (2021 PDF): StartEx, Q1–Q4, EndEx |
+| `/2017/` | *QSource: The F3 Leadership Handbook* (PDF saved Jan 2017): StartEx, Q1–Q4, EndEx |
+| `/2018/` | *QSource: The F3 Manual Of Leadership* (PDF created May 2018): Foundation, Q1, Q2, plus the Appendix A lexicon |
 
 Every section page names its version and links to the same QPoint in the other
 versions (matched by name; see `ALIASES` in `scripts/build.py`).
@@ -23,14 +23,16 @@ versions (matched by name; see `ALIASES` in `scripts/build.py`).
   boldness to find titles, Statement/Scripture/Socratic/Synthesis/Spur,
   subheadings, red new terms and footnotes). Text is kept verbatim.
 - `scripts/build.py`: JSON → HTML. Regenerates `index.html`, `versions/`,
-  `2018/`, `2021/` and `sitemap.xml`.
+  `2017/`, `2018/` and `sitemap.xml`. Old `/2021/` URLs redirect to
+  `/2017/` (see `firebase.json`); the Handbook was first labelled 2021 from its
+  Drive upload date before its PDF metadata showed January 2017.
 - `assets/style.css`: the one stylesheet.
 
 ## Regenerating
 
 ```
 pdftohtml -xml -i -q "QSource The F3 Leadership Handbook.pdf" h21   # poppler-utils
-python3 scripts/pdf_to_sections.py h21.xml 2021 > content/2021-handbook.json
+python3 scripts/pdf_to_sections.py h21.xml 2017 > content/2017-handbook.json
 pdftotext -layout "QSource.Quadrants 1+2 (2018).pdf" q18.txt
 python3 scripts/pdf_to_sections.py --glossary q18.txt > content/2018-lexicon.json
 python3 scripts/build.py

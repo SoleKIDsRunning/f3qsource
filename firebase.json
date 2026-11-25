@@ -12,6 +12,18 @@
       "**/node_modules/**"
     ],
     "cleanUrls": true,
-    "trailingSlash": true
+    "trailingSlash": true,
+    "redirects": [
+      {
+        "source": "/2021",
+        "destination": "/2017/",
+        "type": 301
+      },
+      {
+        "source": "/2021/:rest*",
+        "destination": "/2017/:rest*",
+        "type": 301
+      }
+    ]
   }
 }

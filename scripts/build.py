@@ -19,22 +19,23 @@ SITE_NAME = "QSource"
 BASE_URL = "https://f3qsource.web.app"
 
 EDITIONS = [
-    dict(id="2018", file="2018-manual.json",
-         title="QSource: The F3 Manual Of Leadership",
-         short="2018 Manual",
-         note="Original, unedited text of the 2018 manual (Foundation, Quadrant 1 and Quadrant 2). "
-              "New terms appear in red, as in the original.",
-         groups=[("F", "Foundation"), ("Q1", "The First Quadrant: Get Right"),
-                 ("Q2", "The Second Quadrant: Live Right")],
-         lexicon="2018-lexicon.json"),
-    dict(id="2021", file="2021-handbook.json",
+    dict(id="2017", file="2017-handbook.json",
          title="QSource: The F3 Leadership Handbook",
-         short="2021 Handbook",
-         note="Original, unedited text of the complete 2021 handbook (all four quadrants).",
+         short="2017 Handbook",
+         note="Original, unedited text of the complete handbook (all four quadrants), saved January 2017. "
+              "The earliest version on this site.",
          groups=[("I", "StartEx"), ("Q1", "The First Quadrant: DRP"),
                  ("Q2", "The Second Quadrant: IMPACT"),
                  ("Q3", "The Third Quadrant: Group Leadership"),
                  ("Q4", "The Fourth Quadrant: Legacy"), ("EndEx", "EndEx")]),
+    dict(id="2018", file="2018-manual.json",
+         title="QSource: The F3 Manual Of Leadership",
+         short="2018 Manual",
+         note="Original, unedited text of the May 2018 manual (Foundation, Quadrant 1 and Quadrant 2), a rework of the 2017 Handbook. "
+              "New terms appear in red, as in the original.",
+         groups=[("F", "Foundation"), ("Q1", "The First Quadrant: Get Right"),
+                 ("Q2", "The Second Quadrant: Live Right")],
+         lexicon="2018-lexicon.json"),
 ]
 
 # Section names that differ between editions but are the same QPoint.
@@ -126,8 +127,8 @@ def page(title, body, desc, path, crumbs=""):
   <div class="wrap">
     <a class="brand" href="/"><b>QSource</b><span>The F3 leadership manual</span></a>
     <nav class="top-nav">
+      <a href="/2017/">2017 Handbook</a>
       <a href="/2018/">2018 Manual</a>
-      <a href="/2021/">2021 Handbook</a>
       <a href="/versions/">Versions</a>
     </nav>
   </div>
@@ -280,7 +281,7 @@ def home_page(eds):
 <p class="more"><a href="/versions/">About these versions &rarr;</a></p>
 </section></div>"""
     return "/", page("QSource — The F3 Manual Of Leadership", body,
-                     "QSource, the F3 leadership manual, in its original 2018 and 2021 versions.", "/")
+                     "QSource, the F3 leadership manual, in its original 2017 and 2018 versions.", "/")
 
 
 def versions_page(eds):
@@ -291,8 +292,8 @@ def versions_page(eds):
 <p>Every page on this site says which version its text comes from. The text is reproduced exactly as it appears in that version: wording, capitalization and punctuation are unchanged. Only page layout (line breaks and page numbers) has been removed.</p>
 <div class="table-wrap"><table class="versions"><thead><tr><th>Version</th><th>Title</th><th>Sections</th><th>Notes</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
 <h2>How the versions differ</h2>
-<p>The <b>2018 Manual</b> opens with a five-part Foundation (Disruption, Language, Group, LDP, Preparedness) and covers the first two quadrants, <i>Get Right</i> and <i>Live Right</i>. Each QPoint has a Statement, Scripture, Socratic questions, a Synthesis and a Spur.</p>
-<p>The <b>2021 Handbook</b> opens with a StartEx introduction (QSource, Groups, Leadership Development Process, Four Quadrants), adds a Q1.1 on the Q himself, and covers all four quadrants, including <i>Group Leadership</i> and <i>Legacy</i>.</p>
+<p>The <b>2017 Handbook</b> came first (the PDF was saved in January 2017). It opens with a StartEx introduction (QSource, Groups, Leadership Development Process, Four Quadrants), begins Quadrant 1 with a QPoint on the Q himself, and covers all four quadrants, including <i>Group Leadership</i> and <i>Legacy</i>. Each QPoint has a Statement, Scripture, Socratic questions, a Synthesis and a Spur.</p>
+<p>The <b>2018 Manual</b> (May 2018) reworks the opening into a five-part Foundation (Disruption, Language, Group, LDP, Preparedness), renames the first two quadrants <i>Get Right</i> and <i>Live Right</i>, and covers those two quadrants only. It adds red highlighting for new terms and an appendix lexicon. The 2025 web edits on f3nation.com were made from this text.</p>
 <p>Where the same QPoint appears in more than one version, its page links to the others under <i>This section in other versions</i>.</p>
 </div>"""
     return "/versions/", page("About these versions — QSource", body, "Which versions of QSource are on this site and how they differ.", "/versions/",

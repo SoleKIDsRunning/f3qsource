@@ -139,3 +139,4 @@ tbody th { font-family: Inter, system-ui, sans-serif; text-align: left; white-sp
   th, td { padding: 12px; }
   .toc a { grid-template-columns: 52px 1fr; }
 }
+.versions td { text-align: left; }
