@@ -131,6 +131,7 @@ def page(title, body, desc, path, crumbs=""):
     <nav class="top-nav">
       <a href="/2017/">2017 Handbook</a>
       <a href="/2018/">2018 Manual</a>
+      <a href="/about-the-author/">Author</a>
       <a href="/versions/">Versions</a>
     </nav>
   </div>
@@ -266,6 +267,42 @@ def lexicon_page(e, eds):
                       crumbs_html([("QSource", "/"), (e["short"], f'/{e["id"]}/'), ("Lexicon", None)]))
 
 
+# Passages in which the author describes himself, quoted verbatim from the 2017 Handbook.
+AUTHOR_QUOTES = [
+    ("EndEx", "When I left that small town of my feckless youth to find my fortune"),
+    ("EndEx", "It would have been easier. For if I had been in search"),
+    ("I.1", "If that is your first reaction, it would be a fair one."),
+    ("Q4.10", "F3 could not function without Q"),
+    ("Q4.10", "We didn’t realize it at the time, because we lacked a Leadership philosophy"),
+    ("Q3.5", "When I was a young infantry lieutenant"),
+]
+
+
+def author_page(eds):
+    hb = next(e for e in eds if e["id"] == "2017")
+    by_code = {s["code"]: s for s in hb["sections"]}
+    quotes = []
+    for code, start in AUTHOR_QUOTES:
+        s = by_code[code]
+        para = next(t for k, v in s["parts"].items() for kind, t in v
+                    if kind == "p" and re.sub(r"<[^>]+>", "", t).startswith(start))
+        label = "EndEx" if code == "EndEx" else f'{code} {s["title"]}'
+        quotes.append(f'<figure class="author-quote"><blockquote><p>{tidy(para)}</p></blockquote>'
+                      f'<figcaption>From <a href="/{hb["id"]}/{s["slug"]}/">{esc(label)}</a>, {esc(hb["short"])}</figcaption></figure>')
+    body = f"""<div class="wrap narrow author">
+<div class="author-head">
+<img src="/assets/img/author.jpg" width="360" height="360" alt="Portrait of David Redding, author of QSource, smiling with arms crossed in front of shelves of law books, wearing an F3 T-shirt">
+<div><p class="code">About the author</p><h1>David Redding</h1>
+<p class="lede">Author of QSource. Below, in his own words from the books, is how he describes himself.</p></div>
+</div>
+<h2>In his own words</h2>
+{''.join(quotes)}
+</div>"""
+    return "/about-the-author/", page("About the author — QSource", body,
+                                      "David Redding, author of QSource, in his own words.", "/about-the-author/",
+                                      crumbs_html([("QSource", "/"), ("About the author", None)]))
+
+
 def home_page(eds):
     cards = "".join(
         f'<a class="ed-card" href="/{e["id"]}/"><span class="tag">{esc(e["short"])}</span>'
@@ -280,7 +317,7 @@ def home_page(eds):
 <section class="home-section"><h2>Choose a version</h2>
 <p class="lede">QSource has been published in more than one version. Each is reproduced here exactly as written and clearly labelled, so you can read the original and compare.</p>
 <div class="ed-grid">{cards}</div>
-<p class="more"><a href="/versions/">About these versions &rarr;</a></p>
+<p class="more"><a href="/versions/">About these versions &rarr;</a> &nbsp;·&nbsp; <a href="/about-the-author/">About the author &rarr;</a></p>
 </section></div>"""
     return "/", page("QSource — The F3 Manual Of Leadership", body,
                      "QSource, the F3 leadership manual, in its original 2017 and 2018 versions.", "/")
@@ -316,7 +353,7 @@ def main():
         d = os.path.join(ROOT, e["id"])
         if os.path.isdir(d):
             shutil.rmtree(d)
-    pages = [home_page(eds), versions_page(eds)]
+    pages = [home_page(eds), versions_page(eds), author_page(eds)]
     for e in eds:
         pages.append(toc_page(e))
         if e.get("lexicon_rows"):

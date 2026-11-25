@@ -140,3 +140,15 @@ tbody th { font-family: Inter, system-ui, sans-serif; text-align: left; white-sp
   .toc a { grid-template-columns: 52px 1fr; }
 }
 .versions td { text-align: left; }
+
+/* about the author */
+.author-head { display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: center; margin: 28px 0 12px; }
+.author-head img { width: 100%; height: auto; border-radius: 10px; display: block; }
+.author-head h1 { margin: 4px 0 8px; font-size: clamp(32px, 6vw, 44px); }
+.author .code { font: 700 14px Inter, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 0; }
+.author h2 { margin-top: 36px; }
+.author-quote { margin: 20px 0; background: var(--paper); border: 1px solid var(--rule); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 20px; }
+.author-quote blockquote { margin: 0; }
+.author-quote p { margin: 0; text-align: justify; hyphens: auto; }
+.author-quote figcaption { margin-top: 10px; font: 14px Inter, system-ui, sans-serif; color: var(--muted); }
+@media (max-width: 600px) { .author-head { grid-template-columns: 1fr; } .author-head img { max-width: 260px; } }
