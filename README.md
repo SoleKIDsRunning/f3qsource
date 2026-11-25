@@ -5,6 +5,14 @@ https://f3qsource.web.app. It presents each version of the text unedited and
 clearly labelled, so readers can compare versions. Plain HTML/CSS, deployed with
 Firebase Hosting.
 
+## The text must not be edited
+
+The original wording is the point of this site. Misspellings, typos and slips
+in the source PDFs (e.g. "Ecclesiastics 4:12", "TGalations 5:22-23",
+"12Timothy 2:4") are kept deliberately: they are part of the author's voice.
+Do not correct, normalise or "clean up" anything in `content/`. Only layout
+(line breaks, page numbers, page headers) is removed during conversion.
+
 ## Versions on the site
 
 | Path    | Source                                                       |

@@ -292,6 +292,7 @@ def versions_page(eds):
         rows.append(f'<tr><th scope="row"><a href="/{e["id"]}/">{esc(e["short"])}</a></th><td><i>{esc(e["title"])}</i></td><td>{len(e["sections"])}</td><td>{esc(e["note"])}</td></tr>')
     body = f"""<div class="wrap narrow"><h1>About these versions</h1>
 <p>Every page on this site says which version its text comes from. The text is reproduced exactly as it appears in that version: wording, capitalization and punctuation are unchanged. Only page layout (line breaks and page numbers) has been removed.</p>
+<p><b>Mistakes are kept on purpose.</b> Misspellings, typos and slips in the originals (for example &ldquo;Ecclesiastics 4:12&rdquo; or &ldquo;TGalations 5:22-23&rdquo;) are part of the author&rsquo;s voice and are preserved exactly as written. Please do not correct them.</p>
 <div class="table-wrap"><table class="versions"><thead><tr><th>Version</th><th>Title</th><th>Sections</th><th>Notes</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
 <h2>How the versions differ</h2>
 <p>The <b>2017 Handbook</b> came first (the PDF was saved in January 2017). It opens with a StartEx introduction (QSource, Groups, Leadership Development Process, Four Quadrants), begins Quadrant 1 with a QPoint on the Q himself, and covers all four quadrants, including <i>Group Leadership</i> and <i>Legacy</i>. Each QPoint has a Statement, Scripture, Socratic questions, a Synthesis and a Spur.</p>
